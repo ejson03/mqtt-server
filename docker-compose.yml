@@ -1,0 +1,16 @@
+version: "3"
+services:
+
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    ports:
+      -  27017:27017
+
+  mqtt:
+    image: toke/mosquitto
+    container_name: mqtt
+    ports:
+      - 1883:1883
+      - 9001:9001
+    restart: unless-stopped
