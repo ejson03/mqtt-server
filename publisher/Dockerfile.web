@@ -8,4 +8,5 @@ RUN apt-get update && apt-get -y install python3-pip
 
 RUN pip3 install -r  /app/requirements.txt
 RUN chmod +x /app/run.sh
+EXPOSE $PORT
 CMD /usr/sbin/mosquitto -c /mqtt/config/mosquitto.conf ; python3 -u /app/publisher.py
