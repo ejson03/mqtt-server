@@ -11,9 +11,6 @@ def insert_one(number):
         "date": datetime.datetime.utcnow(),
         "number": number
     }
-    post = collection.insert_one(data)
-    if post: 
-        return True
-    else: 
-        return False
+    collection.insert_one(data)
+   
 

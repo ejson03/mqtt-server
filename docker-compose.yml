@@ -8,9 +8,31 @@ services:
       -  27017:27017
 
   mqtt:
-    image: toke/mosquitto
     container_name: mqtt
+    env_file:
+      - .env
+    build : 
+      context: publisher
+    volumes:
+      - ./publisher:/app
     ports:
       - 1883:1883
       - 9001:9001
-    restart: unless-stopped
+
+  server:
+    container_name: server
+    env_file:
+      - .env
+    build : 
+      context: server
+    volumes:
+      - ./server:/app
+    ports:
+      - 5000:5000
+    depends_on:
+      - mongodb
+      - mqtt
+    command: 
+      python -u server.py
+
+    
