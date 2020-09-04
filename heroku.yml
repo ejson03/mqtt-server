@@ -1,3 +1,4 @@
 build:
   docker:
-    web: publisher/Dockerfile
+    web: Dockerfile
+    worker: publisher/Dockerfile
