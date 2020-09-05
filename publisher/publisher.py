@@ -7,7 +7,7 @@ load_dotenv()
 
 print("Started mqttt.....")
 os.system("cat /mqtt/config/mosquitto.conf &")
-os.system("/usr/sbin/mosquitto -c /mqtt/config/mosquitto.conf &")
+os.system("/usr/sbin/mosquitto -c /mqtt/config/mosquitto.conf -p $PORT &")
 
 
 MQTT_BROKER = "localhost"
