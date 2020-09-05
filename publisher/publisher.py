@@ -10,7 +10,8 @@ os.system("/usr/sbin/mosquitto -c /mqtt/config/mosquitto.conf &")
 
 
 MQTT_BROKER = "localhost"
-MQTT_PORT = int(os.environ.get("MQTT_PORT"))
+MQTT_PORT = int(os.environ.get("PORT"))
+print(MQTT_PORT)
 
 def on_publish(client, userdata, result):
     print("Device : Data published.")
