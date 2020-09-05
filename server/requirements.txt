@@ -3,6 +3,5 @@ flask_mqtt
 flask_socketio
 flask_cors
 python-dotenv
-eventlet
 pymongo
-gunicorn
+gevent

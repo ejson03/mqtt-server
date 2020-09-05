@@ -1,4 +1,3 @@
-var chart = document.getElementById("myChart");
 Chart.defaults.global.animation.duration = 2000; // Animation duration
 Chart.defaults.global.title.display = false; // Remove title
 Chart.defaults.global.title.text = "Chart"; // Title
@@ -16,33 +15,12 @@ Chart.defaults.scale.gridLines.color = "rgba(255, 255, 255, 0.02)";
 Chart.defaults.global.legend.display = false;
 
 function createChart(data) {
-  let happy = [];
-  let sad = [];
-  let angry = [];
+  let number = [];
   let date = [];
-  let emotion = [];
-  console.log(data);
-  data.forEach((stuff) => {
-    if (stuff["emotion"] == "happy") {
-      happy.push(10);
-    } else {
-      happy.push(3);
-    }
-    if (stuff["emotion"] == "sad") {
-      sad.push(8);
-    } else {
-      sad.push(3);
-    }
-    if (stuff["emotion"] == "angry") {
-      angry.push(6);
-    } else {
-      angry.push(3);
-    }
-    emotion.push(stuff["emotion"]);
-    date.push(stuff["time"]);
+  data.forEach((record) => {
+    number.push(record["number"]);
+    date.push(record["date"]);
   });
-  var count = {};
-  emotion.forEach((inst) => (count[inst] = (count[inst] || 0) + 1));
 
   new Chart(document.getElementById("line"), {
     type: "line",
@@ -50,21 +28,9 @@ function createChart(data) {
       labels: date,
       datasets: [
         {
-          data: happy,
-          label: "Happy",
+          data: number,
+          label: "Number",
           borderColor: "#3e95cd",
-          fill: false,
-        },
-        {
-          data: sad,
-          label: "Sad",
-          borderColor: "#8e5ea2",
-          fill: false,
-        },
-        {
-          data: angry,
-          label: "Angry",
-          borderColor: "#3cba9f",
           fill: false,
         },
       ],
@@ -72,7 +38,7 @@ function createChart(data) {
     options: {
       title: {
         display: true,
-        text: "Emotion Analysis",
+        text: "Random Numbers Through Time",
         fontSize: 15,
       },
       legend: {
@@ -90,19 +56,20 @@ function createChart(data) {
   new Chart(document.getElementById("bar-chart"), {
     type: "bar",
     data: {
-      labels: Object.keys(count),
+      labels: date,
       datasets: [
         {
-          label: "Emotion",
-          backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f"],
-          data: Object.values(count),
+          data: number,
+          label: "Number",
+          borderColor: "#3e95cd",
+          fill: true,
         },
       ],
     },
     options: {
       title: {
         display: true,
-        text: "Perecentage emotion this week",
+        text: "Random Numbers Through Time",
       },
       legend: {
         display: true,
@@ -127,6 +94,5 @@ document.forms["formid"].addEventListener("submit", async (event) => {
     body: new FormData(event.target),
   });
   response = await response.json();
-  console.log(response);
-  //createChart(response["name"]);
+  createChart(response["data"]);
 });

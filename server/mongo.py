@@ -14,9 +14,9 @@ def insert_one(number):
     collection.insert_one(data)
 
 def filter_records(start, end):
-    fstart = datetime.datetime.strptime(start, '%Y-%m-%dT%H:%M')
-    fend = datetime.datetime.strptime(end, '%Y-%m-%dT%H:%M')
-    return list(collection.find({ "date": {'$gte':fstart,'$lt': fend}}))
+    fstart = datetime.datetime.strptime(start, '%Y-%m-%dT%H:%M:%S')
+    fend = datetime.datetime.strptime(end, '%Y-%m-%dT%H:%M:%S')
+    return list(collection.find({ "date": {'$gte':fstart,'$lt': fend}}, {'_id': False}))
   
 
    

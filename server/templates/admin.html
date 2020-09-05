@@ -36,9 +36,9 @@
       <form  id="formid" method="POST" action="/report">
         <p class="lead" style="color:white;">Enter the date for analysis</p><br><br>
         <p class="lead" style="color:white;">Start</p>
-        <input class="lead" type="datetime-local" name="start" style ="border-radius: 2px;padding: 10px;"><br><br>
+        <input class="lead" type="datetime-local" step="1"  name="start" style ="border-radius: 2px;padding: 10px;"><br><br>
         <p class="lead" style="color:white;">End</p>
-        <input class="lead" type="datetime-local" name="end" style ="border-radius: 2px;padding: 10px;"><br><br>
+        <input class="lead" type="datetime-local" step="1"  name="end" style ="border-radius: 2px;padding: 10px;"><br><br>
         <input  class="w3-button w3-yellow w3-round-xxlarge " type="submit" title="Analyze" style ="font-size: 20px;"><br>
       </form>
     </section>
@@ -50,7 +50,9 @@
               <h3> Line Chart </h3>
               <canvas width="400" height="225" id="line"></canvas>
             </div>
-          </div>    
+          </div>  
+        </div>  
+        <div class="row">
 
           <div class="col-md-5" style="margin-top: 20px;;">
             <div class="chart-container">
@@ -59,7 +61,7 @@
             </div>
             </div>
           </div>
-        
+        </div>
       
       </div>
     </section>
