@@ -13,7 +13,7 @@ print("Publisher is on job....")
 
 client= paho.Client("admin")
 client.on_publish = on_publish
-client.connect("192.168.99.100", 1883)
+client.connect("ejson-mqtt.herokuapp.com", 6181)
 
 while(True):
     message = str(random.randint(1,100))

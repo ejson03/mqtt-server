@@ -10,8 +10,8 @@ from mongo import insert_one, filter_records
 eventlet.monkey_patch()
 
 app = Flask(__name__)
-app.config['MQTT_BROKER_URL'] = os.environ.get("MQTT_BROKER")
-app.config['MQTT_BROKER_PORT'] = int(os.environ.get("MQTT_PORT"))
+app.config['MQTT_BROKER_URL'] = "worker" #os.environ.get("MQTT_BROKER")
+app.config['MQTT_BROKER_PORT'] = int(os.environ.get("PORT"))
 app.config['MQTT_REFRESH_TIME'] = 1.0
 app.config['CORS_HEADERS'] = 'Content-Type'
 cors = CORS(app, resources={ "/*": {"origins":"*"} })
@@ -47,7 +47,7 @@ def report():
         return {"data" : data}
 
 if __name__ == "__main__":
-    socketio.run(app, host='0.0.0.0', port=5000, debug=True)
+    socketio.run(app, host='0.0.0.0', debug=True)
 
 
 
