@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 print("Started mqttt.....")
+os.system("cat /mqtt/config/mosquitto.conf &")
 os.system("/usr/sbin/mosquitto -c /mqtt/config/mosquitto.conf &")
 
 
