@@ -5,18 +5,28 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
-MQTT_BROKER = "localhost" #os.environ.get("MQTT_BROKER")
+print("Started mqttt.....")
+os.system("/usr/sbin/mosquitto -c /mqtt/config/mosquitto.conf &")
+
+
+MQTT_BROKER = "localhost"
 MQTT_PORT = int(os.environ.get("MQTT_PORT"))
 
 def on_publish(client, userdata, result):
     print("Device : Data published.")
     pass
 
-print("Publisher is on job....")    
+print("Publisher is on job....")  
 
 client= paho.Client("admin")
 client.on_publish = on_publish
-client.connect(MQTT_BROKER, MQTT_PORT)
+
+while True:
+    try:
+        client.connect(MQTT_BROKER, MQTT_PORT)
+        break
+    except: 
+        pass
 
 while(True):
     message = str(random.randint(1,100))

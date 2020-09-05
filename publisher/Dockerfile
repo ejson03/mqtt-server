@@ -1,11 +1,11 @@
 FROM toke/mosquitto
 
 WORKDIR /app
-COPY . /app
-
-
 RUN apt-get update && apt-get -y install python3-pip 
 
+COPY . /app
+COPY mosquitto.conf /mqtt/config
 RUN pip3 install -r  /app/requirements.txt
-RUN chmod +x /app/run.sh
-CMD /usr/sbin/mosquitto -c /mqtt/config/mosquitto.conf ; python3 -u /app/publisher.py
+RUN echo $PORT
+EXPOSE $PORT
+CMD python3 -u publisher.py
