@@ -1,19 +1,3 @@
-Chart.defaults.global.animation.duration = 2000; // Animation duration
-Chart.defaults.global.title.display = false; // Remove title
-Chart.defaults.global.title.text = "Chart"; // Title
-Chart.defaults.global.title.position = "bottom"; // Title position
-Chart.defaults.global.defaultFontColor = "#999"; // Font color
-Chart.defaults.global.defaultFontSize = 10; // Font size for every label
-
-Chart.defaults.global.tooltips.backgroundColor = "#FFF"; // Tooltips background color
-Chart.defaults.global.tooltips.borderColor = "white"; // Tooltips border color
-Chart.defaults.global.legend.labels.padding = 0;
-Chart.defaults.scale.ticks.beginAtZero = true;
-Chart.defaults.scale.gridLines.zeroLineColor = "rgba(255, 255, 255, 0.1)";
-Chart.defaults.scale.gridLines.color = "rgba(255, 255, 255, 0.02)";
-
-Chart.defaults.global.legend.display = false;
-
 function createChart(data) {
   let number = [];
   let date = [];
@@ -30,58 +14,108 @@ function createChart(data) {
         {
           data: number,
           label: "Number",
-          borderColor: "#3e95cd",
+          backgroundColor: "rgba(151,249,190,0.5)",
+          borderColor: "rgba(151,249,190,0.5)",
+          borderWidth: 0.5,
           fill: false,
         },
       ],
     },
     options: {
+      responsive: true,
       title: {
         display: true,
         text: "Random Numbers Through Time",
         fontSize: 15,
       },
       legend: {
-        display: true,
-        position: "top",
-        labels: {
-          padding: 10,
-          fontSize: 15,
-          fontColor: "#ffffff",
-        },
+        display: false,
+      },
+      tooltips: {
+        mode: "index",
+        intersect: false,
+      },
+      hover: {
+        mode: "nearest",
+        intersect: true,
+      },
+      scales: {
+        xAxes: [
+          {
+            display: true,
+            gridLines: {
+              display: false,
+            },
+            scaleLabel: {
+              display: true,
+              labelString: "Date",
+            },
+            type: "time",
+            distribution: "linear",
+            time: {
+              displayFormats: {
+                minute: "HH:mm:ss",
+              },
+              unit: "hour",
+            },
+          },
+        ],
+        yAxes: [
+          {
+            gridLines: {
+              display: false,
+            },
+            display: true,
+            scaleLabel: {
+              display: true,
+            },
+            ticks: {
+              beginAtZero: true,
+              stepSize: 10,
+            },
+          },
+        ],
       },
     },
   });
 
-  new Chart(document.getElementById("bar-chart"), {
-    type: "bar",
-    data: {
-      labels: date,
-      datasets: [
-        {
-          data: number,
-          label: "Number",
-          borderColor: "#3e95cd",
-          fill: true,
-        },
-      ],
-    },
-    options: {
-      title: {
-        display: true,
-        text: "Random Numbers Through Time",
-      },
-      legend: {
-        display: true,
-        position: "bottom",
-        labels: {
-          padding: 10,
-          fontSize: 15,
-          fontColor: "#ffffff",
-        },
-      },
-    },
-  });
+  // new Chart(document.getElementById("bar-chart"), {
+  //   type: "bar",
+  //   data: {
+  //     labels: date,
+  //     datasets: [
+  //       {
+  //         data: number,
+  //         label: "Number",
+  //         borderColor: "#3e95cd",
+  //         fillColor: "rgba(151,249,190,0.5)",
+  //         strokeColor: "rgba(255,255,255,1)",
+  //         fill: true,
+  //       },
+  //     ],
+  //   },
+  //   options: {
+  //     title: {
+  //       display: true,
+  //       text: "Random Numbers Through Time",
+  //       fontSize: 15,
+  //     },
+  //     // legend: {
+  //     //   display: true,
+  //     //   position: "top",
+  //     //   labels: {
+  //     //     padding: 10,
+  //     //     fontSize: 15,
+  //     //     fontColor: "#ffffff",
+  //     //   },
+  //     // },
+  //     axisY: {
+  //       lineThickness: 1,
+  //     },
+  //     zoomEnabled: true,
+  //     animationEnabled: true,
+  //   },
+  // });
 
   var x = document.getElementById("hidden_div");
   x.style.display = "block";

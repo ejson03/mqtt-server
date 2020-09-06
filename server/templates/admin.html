@@ -30,7 +30,6 @@
         <li><i class="fa fa-support fa-fw"></i><a href="/report"> Reports</a></li> 
       </ul>
     </aside>
-    <section id="contents">
 
     <section class="left" style="margin-top: 5%;">
       <form  id="formid" method="POST" action="/report">
@@ -42,26 +41,25 @@
         <input  class="w3-button w3-yellow w3-round-xxlarge " type="submit" title="Analyze" style ="font-size: 20px;"><br>
       </form>
     </section>
-    <section class="charts">
+    <section class="charts left">
       <div class="container-fluid" id="hidden_div" style="display: none;">
         <div class="row">
-          <div class="col-md-5" >
-            <div class="chart-container">
+          <div  >
+            <div class="chart-container" >
               <h3> Line Chart </h3>
-              <canvas width="400" height="225" id="line"></canvas>
+              <canvas width="400" height="150" id="line"></canvas>
             </div>
           </div>  
         </div>  
-        <div class="row">
-
-          <div class="col-md-5" style="margin-top: 20px;;">
+        <!-- <div class="row">
+          <div  style="margin-top: 20px;;">
             <div class="chart-container">
               <h3> Bar Chart</h3>
-              <canvas width="400" height="225" id="bar-chart"></canvas>
+              <canvas width="600" height="450" id="bar-chart"></canvas>
             </div>
             </div>
           </div>
-        </div>
+        </div> -->
       
       </div>
     </section>
